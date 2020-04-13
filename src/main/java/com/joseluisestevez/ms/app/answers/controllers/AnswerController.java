@@ -29,4 +29,10 @@ public class AnswerController {
         Iterable<Answer> answers = answerService.findAnswerByStudentAndExam(studentId, examId);
         return ResponseEntity.ok().body(answers);
     }
+
+    @GetMapping("/student/{studentId}/exams-answered")
+    public ResponseEntity<?> getExamsAnswered(@PathVariable Long studentId) {
+        Iterable<Long> examIds = answerService.findExamIdWithAnswersAndStudent(studentId);
+        return ResponseEntity.ok().body(examIds);
+    }
 }

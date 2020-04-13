@@ -16,13 +16,19 @@ public class AnswerServiceImpl implements AnswerService {
     @Transactional
     @Override
     public Iterable<Answer> saveAll(Iterable<Answer> answers) {
-        return answerRepository.findAll();
+        return answerRepository.saveAll(answers);
     }
 
     @Transactional(readOnly = true)
     @Override
     public Iterable<Answer> findAnswerByStudentAndExam(Long studentId, Long examId) {
         return answerRepository.findAnswerByStudentAndExam(studentId, examId);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Iterable<Long> findExamIdWithAnswersAndStudent(Long studentId) {
+        return answerRepository.findExamIdWithAnswersAndStudent(studentId);
     }
 
 }
