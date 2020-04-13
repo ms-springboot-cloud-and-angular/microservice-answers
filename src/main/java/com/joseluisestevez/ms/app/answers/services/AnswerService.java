@@ -6,4 +6,6 @@ public interface AnswerService {
 
     Iterable<Answer> saveAll(Iterable<Answer> answers);
 
+    Iterable<Answer> findAnswerByStudentAndExam(Long studentId, Long examId);
+
 }

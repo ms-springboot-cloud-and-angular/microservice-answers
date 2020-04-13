@@ -19,4 +19,10 @@ public class AnswerServiceImpl implements AnswerService {
         return answerRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public Iterable<Answer> findAnswerByStudentAndExam(Long studentId, Long examId) {
+        return answerRepository.findAnswerByStudentAndExam(studentId, examId);
+    }
+
 }
