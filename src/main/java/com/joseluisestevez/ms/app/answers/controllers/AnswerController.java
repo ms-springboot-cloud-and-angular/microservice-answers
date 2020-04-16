@@ -1,5 +1,8 @@
 package com.joseluisestevez.ms.app.answers.controllers;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +23,12 @@ public class AnswerController {
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody Iterable<Answer> answers) {
+
+        answers = ((List<Answer>) answers).stream().map(a -> {
+            a.setStudentId(a.getStudent().getId());
+            return a;
+        }).collect(Collectors.toList());
+
         Iterable<Answer> saved = answerService.saveAll(answers);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
