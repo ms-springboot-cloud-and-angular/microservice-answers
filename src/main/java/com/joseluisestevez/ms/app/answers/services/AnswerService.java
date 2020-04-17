@@ -10,4 +10,6 @@ public interface AnswerService {
 
     Iterable<Long> findExamIdWithAnswersAndStudent(Long studentId);
 
+    Iterable<Answer> findByStudentId(Long studentId);
+
 }

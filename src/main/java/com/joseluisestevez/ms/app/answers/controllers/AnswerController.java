@@ -26,6 +26,7 @@ public class AnswerController {
 
         answers = ((List<Answer>) answers).stream().map(a -> {
             a.setStudentId(a.getStudent().getId());
+            a.setQuestionId(a.getQuestion().getId());
             return a;
         }).collect(Collectors.toList());
 
