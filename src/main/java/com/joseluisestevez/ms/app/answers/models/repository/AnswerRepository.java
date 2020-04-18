@@ -13,4 +13,10 @@ public interface AnswerRepository extends MongoRepository<Answer, String> {
     @Query("{'studentId': ?0}")
     Iterable<Answer> findByStudentId(Long studentId);
 
+    @Query("{'studentId': ?0, 'question.exam.id': ?1}")
+    Iterable<Answer> findAnswerByStudentAndExam(Long studentId, Long examId);
+
+    @Query(value = "{'studentId': ?0}", fields = "{'question.exam.id': 1}")
+    Iterable<Answer> findExamIdWithAnswersAndStudent(Long studentId);
+
 }

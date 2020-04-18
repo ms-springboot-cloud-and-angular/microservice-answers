@@ -1,7 +1,6 @@
 package com.joseluisestevez.ms.app.answers.models.entity;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.joseluisestevez.ms.commons.exams.models.entity.Question;
@@ -22,12 +21,10 @@ public class Answer {
 
     private String text;
 
-    @Transient
     private Student student;
 
     private Long studentId;
 
-    @Transient
     private Question question;
 
     private Long questionId;
